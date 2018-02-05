@@ -1,0 +1,287 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Grayscale - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" type="text/css">#}
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/grayscale.css' %}" rel="stylesheet">
+
+    <style>
+        .loader {
+            border: 3px solid #f3f3f3; /* Light grey */
+            border-top: 3px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+
+</head>
+
+<body id="page-top">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Currency Predictor</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <select class="btn btn-default btn-lg" id="selectCurrency">
+                        <option value="1" selected>Bitcoin</option>
+                        <option value="2">Ethereum</option>
+                        <option value="3">Litecoin</option>
+                        <option value="4">Dashcoin</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Intro Header -->
+<header class="masthead">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 twoToneCenter">
+                    <a class="btn btn-default btn-lg twoToneButton" id="predictButton">Predict Future Prices</a>
+                    {#                    <button class="twoToneButton">Predict Future Prices</button>#}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <br><br><br>
+                    <div id="priceGraph"></div>
+                </div>
+                <div class="col">
+                    <br><br><br>
+                    <div id="futureGraph"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<section id="about" class="content-section text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>About Currency Predictor</h2>
+                <p>Currency Predictor is a Django web application that shows the history of prices for different cryptocurrencies
+                    and also predicts their prices in the near future.
+                <p>The source code for the project will be posted soon...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="download-section content-section text-center">
+    <div class="container">
+        <div class="col-lg-8 mx-auto">
+            <h2>Contact the Developer</h2>
+                <p>Feel free to visit my blog
+                    <a href="http://jashish.com.np" target="_blank">Ashish Jaiswal</a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/ashiz2013" class="btn btn-default btn-lg" target="_blank">
+                            <i class="fa fa-twitter fa-fw"></i>
+                            <span class="network-name">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://github.com/asheeshcric" class="btn btn-default btn-lg" target="_blank">
+                            <i class="fa fa-github fa-fw"></i>
+                            <span class="network-name">Github</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/" class="btn btn-default btn-lg" target="_blank">
+                            <i class="fa fa-google-plus fa-fw"></i>
+                            <span class="network-name">Google+</span>
+                        </a>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container text-center">
+        <p>Copyright &copy; Ashish Jaiswal</p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Plugin JavaScript -->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+<!-- CDN Scripts  !-->
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{% static 'js/grayscale.min.js' %}"></script>
+<script>
+    var selectedCurrency = '1';
+    var currencyName = 'Bitcoin';
+
+    $("#selectCurrency").change(function () {
+        selectedCurrency = $(this).val();
+{#        console.log(selectedCurrency);#}
+        if(selectedCurrency === '4'){
+            currencyName = 'Dash Coin';
+        }
+        else if (selectedCurrency === '2'){
+            currencyName = 'Ethereum';
+        }
+        else if (selectedCurrency === '3'){
+            currencyName = 'Litecoin';
+        }
+        else {
+            currencyName = 'Bitcoin';
+        }
+        var twoToneButton = document.querySelector('.twoToneButton');
+        twoToneButton.innerHTML = "Predict Future Prices";
+        showPrices();
+    });
+    
+    $(".twoToneButton").click(function () {
+{#        $(this).innerHTML = "Predicting.....";#}
+        var twoToneButton = document.querySelector('.twoToneButton');
+        twoToneButton.innerHTML = "Predicting.....";
+        twoToneButton.classList.add('spinning');
+        $.ajax({
+            method: "GET",
+            url: '/api/prediction/' + selectedCurrency,
+            success: function (context) {
+                //console.log(context)
+                jLabels = context.labels;
+                jData = context.data;
+                drawFutureGraph(jLabels, jData);
+            }
+        });
+    });
+
+    $(document).ready(function () {
+{#        selectedCurrency = 1;#}
+        showPrices();
+    });
+
+    function showPrices() {
+        var endpoint = '/api/prices/' + selectedCurrency;
+        var jData = jLabels = [];
+        $.ajax({
+            method: "GET",
+            url: endpoint,
+            success: function (context) {
+                //console.log(context)
+                jLabels = context.labels;
+                jData = context.data;
+                drawPriceGraph(jLabels, jData);
+            }
+        });
+    }
+
+    function drawPriceGraph(jLabels, jData) {
+        var data = [{
+            x: jLabels,
+            y: jData,
+            type: 'scatter',
+            orientation: 'h',
+            marker: {
+                color: '#23b7e5'
+            }
+        }];
+        var layout = {
+            title: currencyName + ' Price History',
+            titlefont: {
+                family: 'Droid Sans Mono',
+                size: 36,
+                color: '#000000'
+            },
+            margin: {l: 50}
+        };
+        Plotly.newPlot('priceGraph', data, layout);
+    }
+
+    function drawFutureGraph(jLabels, jData){
+        var data = [{
+            x: jLabels,
+            y: jData,
+            type: 'scatter',
+            orientation: 'h',
+            marker: {
+                color: '#23b7e5'
+            }
+        }];
+        var layout = {
+            title: currencyName + ' Future Prediction',
+            titlefont: {
+                family: 'Droid Sans Mono',
+                size: 36,
+                color: '#000000'
+            },
+            margin: {l: 50}
+        };
+        Plotly.newPlot('futureGraph', data, layout);
+        var twoToneButton = document.querySelector('.twoToneButton');
+        twoToneButton.classList.remove('spinning');
+        twoToneButton.innerHTML = "Predicted!";
+    }
+</script>
+
+</body>
+
+</html>

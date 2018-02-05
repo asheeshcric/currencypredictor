@@ -1,0 +1,114 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+{% block title %}Currency Predictor{% endblock %}
+{% block header %}
+    <img src="{% static 'images/logo.png' %}" style="width: 80%;">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-4">
+            <br><br><br>
+            <p class="lead">
+{#                <a class="btn btn-primary btn-lg" id="predictButton" role="button">Predict Future Prices</a>#}
+                <a class="btn btn-primary btn-lg" role="button" id="predictButton" style="color: white;">Predict Future Prices</a>
+            </p>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <br><br><br>
+            <div id="myChart"></div>
+        </div>
+        <div class="col">
+            <br><br><br>
+            <div id="futureChart"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        #myChart{
+            left: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).ready(function () {
+            var endpoint = '/api/prices'
+            var jData = jLabels = []
+            $.ajax({
+               method: "GET",
+               url: endpoint,
+               success: function(context){
+                   //console.log(context)
+                   jLabels = context.labels,
+                   jData = context.data,
+                   Chart()
+               }
+            });
+            function Chart(){
+                var data = [{
+                    x: jData,
+                    y: jLabels,
+                    type: 'scatter',
+                    orientation: 'h',
+                    marker: {
+                        color: '#23b7e5',
+                    },
+                }];
+                var layout = {
+                    title: 'Bitcoin Price History',
+                    titlefont: {
+                        family: 'Droid Sans Mono',
+                        size: 36,
+                        color: '#000000'
+                    },
+                    margin: {l:200}
+                };
+                Plotly.newPlot('myChart', data, layout);
+            }
+
+        });
+        $("#predictButton").click(function () {
+            $.ajax({
+                method: "GET",
+                url: '/api/prediction',
+                success: function (context) {
+                    //console.log(context)
+                    jLabels = context.labels;
+                    jData = context.data;
+                    futureChart();
+                }
+            });
+            function futureChart(){
+                var data = [{
+                    x: jData,
+                    y: jLabels,
+                    type: 'scatter',
+                    orientation: 'h',
+                    marker: {
+                        color: '#23b7e5',
+                    },
+                }];
+                var layout = {
+                    title: 'Future Price Prediction',
+                    titlefont: {
+                        family: 'Droid Sans Mono',
+                        size: 36,
+                        color: '#000000'
+                    },
+                    margin: {l:200}
+                };
+                Plotly.newPlot('futureChart', data, layout);
+{#                    $(this).hide();#}
+            }
+        });
+    </script>
+{% endblock %}

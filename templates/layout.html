@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" type="text/css">
+</head>
+<body background="{% static 'images/background.png' %}">
+    <div class="container-fluid">
+        <div class="jumbotron" style="background: rgba(211, 211, 211, 0.1);">
+            <div class="row">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="true" aria-expanded="false">Currency</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Bitcoin</a>
+                            <a class="dropdown-item" href="#">Ethereum</a>
+                            <a class="dropdown-item" href="#">DashCoin</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Other Currencies</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    {% block header %}{% endblock %}
+                </div>
+                <div class="col"></div>
+            </div>
+
+            {% block content %}{% endblock %}
+
+        </div>
+    </div>
+
+
+    {% block styles %}{% endblock %}
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    {% block js %}{% endblock %}
+</body>
+</html>
