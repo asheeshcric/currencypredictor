@@ -51,9 +51,6 @@ This will start a development server of Django in the localhost at port 8000. So
 
 * [Django](https://docs.djangoproject.com/en/2.0/) - The web framework used
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
