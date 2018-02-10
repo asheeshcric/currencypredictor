@@ -54,7 +54,7 @@ This will start a development server of Django in the localhost at port 8000. So
 
 ## Authors
 
-* **Ashish Jaiswal** - *Initial work* - [asheeshcric](https://github.com/asheeshcric)
+* **Ashish Jaiswal** - *Initial work* - [ashishjaiswal](http://jashish.com.np)
 
 ## Acknowledgments
 
